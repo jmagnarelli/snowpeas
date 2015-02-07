@@ -1,23 +1,23 @@
 <h2>Login Page</h2>
 
 <form>
-  <label>
+  <label ng-show="createMode">
     <span>Full Name</span>
     <input type="text" ng-model="fullname" />
   </label>
-  <label>
+  <label ng-show="createMode">
     <span>Address (street) </span>
     <input type="text" ng-model="address" />
   </label>
-  <label>
+  <label ng-show="createMode">
     <span>City</span>
     <input type="text" ng-model="city" />
   </label>
-  <label>
+  <label ng-show="createMode">
     <span>State</span>
     <input type="text" ng-model="state" />
   </label>
-  <label>
+  <label ng-show="createMode">
     <span>Zipcode</span>
     <input type="text" ng-model="zipcode" />
   </label>

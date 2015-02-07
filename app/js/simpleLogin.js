@@ -97,7 +97,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
   .factory('createProfile', ['fbutil', '$q', '$timeout', function(fbutil, $q, $timeout) {
     return function(id, email, fullname, address, city, state, zipcode) {
       var ref = fbutil.ref('users', id), def = $q.defer();
-      ref.set({email: email, fullname: fullname, address: address, city: city, state: state, zipcode:zipcode}, function(err) {
+      ref.set({email: email, name: fullname, address: address, city: city, state: state, zipcode:zipcode}, function(err) {
         $timeout(function() {
           if( err ) {
             def.reject(err);
