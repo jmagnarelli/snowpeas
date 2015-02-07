@@ -103,7 +103,7 @@ body {
 
 .container {
   width: auto;
-  max-width: 680px;
+  max-width: 1000px;
   padding: 0 15px;
 }
 
@@ -150,4 +150,10 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.foodItem {
+  float:left;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
 }
