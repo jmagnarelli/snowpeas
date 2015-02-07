@@ -1,0 +1,15 @@
+<h2>Food near you</h2>
+
+<div id="listingResults">
+	<article class="foodItem" ng-repeat="item in items" ng-click="openItem(item)" id="{{item.$id}}">
+		<h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
+		<div class="itemPrice">{{item.price}}<div>
+		<div class="itemDescr">{{item.description}}</div>
+		<!-- TODO: figure out how to look up an owner and put their name here -->
+		<div class="itemOwner">{{item.owner}}</div>
+	</article>
+
+<p>
+  Running the 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
