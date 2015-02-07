@@ -21,11 +21,14 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   }])
 .controller('ItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
     $scope.items = itemsList;
-    $scope.addItem = function (newItem) {
-        if (newItem) {
-            $scope.items.$add({
-                text: newItem
-            });
+    $scope.addItem = function (newItemName, newItemDescription, newItemPrice) {
+        if (newItemName && newItemDescription && newItemPrice) {
+            var newItem = {
+                name: newItemName,
+                description: newItemDescription,
+                price: newItemPrice
+            }
+            $scope.items.$add(newItem);
         }
     };
 }])
