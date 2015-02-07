@@ -28,6 +28,10 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   };
 }])
 
+.controller('ListItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
+    $scope.items = itemsList;
+}])
+
 
 .controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
   $scope.fullname = null;

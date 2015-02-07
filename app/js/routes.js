@@ -44,7 +44,7 @@ angular.module('myApp.routes', ['ngRoute', 'simpleLogin'])
     },
     '/listItems': {
         templateUrl: 'partials/itemListing.html',
-        controller: 'ItemsCtrl'
+        controller: 'ListItemsCtrl'
     }
   })
 
