@@ -35,14 +35,12 @@
           </li>
           <li><a href="#/listItems">List Items</a>
           </li>
-
-          <li ng-show-auth><a href="#/account">account</a>
-          </li>
-
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <li ng-hide-auth><a href="#/login">login</a>
+          </li>
+          <li ng-show-auth><a href="#/account">Account</a>
           </li>
 
         </ul>
@@ -64,7 +62,7 @@
 -->
   <div class="container" style="margin-top: 100px;">
 
-    <div ng-view></div>
+    <div ng-view style="margin: 100px 0;"></div>
   </div>
   <footer class="footer">
     <div class="container">

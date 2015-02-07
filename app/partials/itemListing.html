@@ -6,18 +6,14 @@
 </form>
 
 <div id="listingResults">
-	<article class="foodItem" ng-repeat="item in items | filter:{$:searchTerm}:false" ng-click="openItem(item)" id="{{item.$id}}">
-		<h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
-		<img src="{{item.url}}" class="itemPicture" alt="{{item.name}}">
-		<div class="itemName">{{item.name}}
-		<div class="itemPrice">{{item.price}}<div>
-		<div class="itemDescr">{{item.description}}</div>
-		<!-- TODO: figure out how to look up an owner and put their name here -->
-		<div class="itemOwner"><a href="#/users/{{item.userid}}">{{item.username}}</a></div>
-	</article>
+  <article class="foodItem" ng-repeat="item in items | filter:{$:searchTerm}:false" ng-click="openItem(item)" id="{{item.$id}}">
+    <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
+    <img src="{{item.url}}" class="itemPicture" alt="{{item.name}}">
+    <div class="itemName">{{item.name}}
+    <div class="itemPrice">{{item.price}}<div>
+    <div class="itemDescr">{{item.description}}</div>
+    <!-- TODO: figure out how to look up an owner and put their name here -->
+    <div class="itemOwner"><a href="#/users/{{item.userid}}">{{item.username}}</a></div>
+  </article>
 </div>
 
-<p>
-  Running the 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
