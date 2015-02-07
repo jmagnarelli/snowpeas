@@ -46,15 +46,15 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
           auth.$unauth();
         },
 
-        createAccount: function(email, pass, name) {
-          return auth.$createUser({email: email, password: pass})
+        createAccount: function(fullname, address, city, state, zipcode, email, pass) {
+          return auth.$createUser({fullname: fullname, address: address, city: city, state: state, zipcode: zipcode, email: email, password: pass})
             .then(function() {
               // authenticate so we have permission to write to Firebase
               return fns.login(email, pass);
             })
             .then(function(user) {
               // store user data in Firebase after creating account
-              return createProfile(user.uid, email, name).then(function () {
+              return createProfile(user.uid, email, fullname, address, city, state, zipcode).then(function () {
                 return user;
               });
             });
@@ -95,9 +95,9 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
     }])
 
   .factory('createProfile', ['fbutil', '$q', '$timeout', function(fbutil, $q, $timeout) {
-    return function(id, email, name) {
+    return function(id, email, fullname, address, city, state, zipcode) {
       var ref = fbutil.ref('users', id), def = $q.defer();
-      ref.set({email: email, name: name||firstPartOfEmail(email)}, function(err) {
+      ref.set({email: email, fullname: fullname, address: address, city: city, state: state, zipcode:zipcode}, function(err) {
         $timeout(function() {
           if( err ) {
             def.reject(err);
