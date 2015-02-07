@@ -20,11 +20,48 @@
             }
          }
       },
+       "items" : {
+           ".read": true,
+           "$item": {
+               ".write": true,
+               ".validate": "newData.hasChildren(['name', 'price', 'description', 'userid', 'username'])",
+               "name": {
+                   ".validate": "newData.isString() && newData.val().length <= 1000"
+               },
+               "price": {
+                   ".validate": "newData.isString() && newData.val().length <= 1000"
+               },
+               "description": {
+                   ".validate": "newData.isString() && newData.val().length <= 1000"
+               },
+               "userid" : {
+                    ".validate": "newData.isString() && newData.val().length <= 2000"
+               },
+               "username" : {
+                    ".validate": "newData.isString() && newData.val().length <= 2000"
+               },
+               "$other": {
+                   ".validate": false
+               }
+           }
+       },
       "users": {
          "$user": {
             ".read": "auth.uid === $user",
             ".write": "auth.uid === $user && (!newData.exists() || newData.hasChildren())",
-            "name": {
+            "fullname": {
+               ".validate": "newData.isString() && newData.val().length <= 2000"
+            },
+            "address": {
+               ".validate": "newData.isString() && newData.val().length <= 2000"
+            },
+            "city": {
+               ".validate": "newData.isString() && newData.val().length <= 2000"
+            },
+            "state": {
+               ".validate": "newData.isString() && newData.val().length <= 2000"
+            },
+            "zipcode": {
                ".validate": "newData.isString() && newData.val().length <= 2000"
             },
             "email": {
