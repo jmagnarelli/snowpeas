@@ -1,16 +1,24 @@
-(function() {
-   'use strict';
+(function () {
+    'use strict';
 
-   /* Services */
+    /* Services */
 
-   angular.module('myApp.services', [])
+    angular.module('myApp.services', [])
 
-      // put your services here!
-      // .service('serviceName', ['dependency', function(dependency) {}]);
+    // put your services here!
+    // .service('serviceName', ['dependency', function(dependency) {}]);
 
-     .factory('messageList', ['fbutil', function(fbutil) {
-       return fbutil.syncArray('messages', {limit: 10, endAt: null});
-     }]);
+    /*.factory('messageList', ['fbutil', function (fbutil) {
+        return fbutil.syncArray('messages', {
+            limit: 10,
+            endAt: null
+        });
+     }]);*/
+    .factory('itemsList', ['fbutil', function (fbutil) {
+        return fbutil.syncArray('items', {
+            limit:10,
+            endAt: null
+        });
+    }]);
 
 })();
-
