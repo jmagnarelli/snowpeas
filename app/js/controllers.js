@@ -32,6 +32,13 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     $scope.items = itemsList;
 }])
 
+.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', function ($scope, $routeParams, fbutil, usersList) {
+    console.log(usersList);
+    //var profile = fbutil.syncObject(['users', $routeParams.userId]);
+    //$scope.user = profile;
+    //profile.$bindTo($scope, 'profile');
+}])
+
 
 .controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
   $scope.fullname = null;
@@ -43,6 +50,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   $scope.pass = null;
   $scope.confirm = null;
   $scope.createMode = false;
+  $scope.coordinates = null;
 
   $scope.login = function (email, pass) {
     $scope.err = null;
@@ -90,7 +98,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   function errMessage(err) {
     return angular.isObject(err) && err.code ? err.code : err + '';
   }
-  }])
+}])
 
 .controller('AccountCtrl', ['$scope', 'simpleLogin', 'fbutil', 'user', '$location',
     function ($scope, simpleLogin, fbutil, user, $location) {
@@ -103,6 +111,10 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       profile.$destroy();
       simpleLogin.logout();
       $location.path('/login');
+    };
+
+    $scope.changeInfo = function (name, address, city, zip, state) {
+        // TODO: update user information
     };
 
     $scope.changePassword = function (pass, confirm, newPass) {
