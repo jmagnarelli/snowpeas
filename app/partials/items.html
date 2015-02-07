@@ -1,13 +1,11 @@
 <h2>Item</h2>
 
 <form>
-  <input placeholder="Item..." ng-model="newItem">
-  <button type="submit" ng-click="addItem(newItem);newItem = null;">send</button>
+  <input placeholder="Item Name" ng-model="newItemName">
+  <input placeholder="Item Description" ng-model="newItemDescription">
+  <input placeholder="Item Price" ng-model="newItemPrice">
+  <button type="submit" ng-click="addItem(newItemName, newItemDescription, newItemPrice);newItemName = null;newItemDescription = null;newItemPrice = null;">send</button>
 </form>
-
-<ul id="items" ng-show="items.length">
-    <li ng-repeat="item in items | reverse">{{item.text}}</li>
-</ul>
 
 <p>
   Running the 'interpolate' filter:
