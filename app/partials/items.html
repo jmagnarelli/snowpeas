@@ -1,3 +1,20 @@
+<script>
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        return navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+
+showPosition(getLocation())
+</script>
+
 <h2>Item</h2>
 
 <form>
@@ -6,6 +23,8 @@
   <input placeholder="Item Price" ng-model="newItemPrice">
   <button type="submit" ng-click="addItem(newItemName, newItemDescription, newItemPrice);newItemName = null;newItemDescription = null;newItemPrice = null;">send</button>
 </form>
+
+<p id="demo"></p>
 
 <p>
   Running the 'interpolate' filter:
