@@ -14,5 +14,8 @@
     "firebase": "2.0.6",
     "angularfire": "0.9.1",
     "mockfirebase": "~0.8.0"
+  },
+  "resolutions": {
+    "firebase": "2.0.6"
   }
 }
