@@ -109,6 +109,10 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       $location.path('/login');
     };
 
+    $scope.changeInfo = function (name, address, city, zip, state) {
+        // TODO: update user information
+    };
+
     $scope.changePassword = function (pass, confirm, newPass) {
       resetMessages();
       if (!pass || !confirm || !newPass) {
