@@ -4,9 +4,8 @@
 
 angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   .controller('HomeCtrl', ['$scope', 'fbutil', 'user', 'FBURL', function ($scope, fbutil, user, FBURL) {
-    $scope.syncedValue = fbutil.syncObject('syncedValue');
-    $scope.user = user;
-    $scope.FBURL = FBURL;
+    var user = fbutil.syncObject(['users', user.uid]);
+    user.$bindTo($scope, 'user');
   }])
 
 .controller('ItemsCtrl', ['$scope', 'itemsList', 'user', 'fbutil', function ($scope, itemsList, user, fbutil) {
