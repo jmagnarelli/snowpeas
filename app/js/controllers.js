@@ -32,8 +32,11 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     $scope.items = itemsList;
 }])
 
-.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', function ($scope, $routeParams, fbutil) {
-    $scope.user = fbutil.syncObject('users', $routeParams.userId)
+.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', function ($scope, $routeParams, fbutil, usersList) {
+    console.log(usersList);
+    //var profile = fbutil.syncObject(['users', $routeParams.userId]);
+    //$scope.user = profile;
+    //profile.$bindTo($scope, 'profile');
 }])
 
 

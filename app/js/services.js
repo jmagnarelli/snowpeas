@@ -19,6 +19,13 @@
             limit:10,
             endAt: null
         });
+    }])
+
+    .factory('usersList', ['fbutil', function (fbutil) {
+        return fbutil.syncArray('users', {
+            limit:100,
+            endAt: null
+        });
     }]);
 
 })();

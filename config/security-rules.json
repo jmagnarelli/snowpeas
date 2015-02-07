@@ -48,7 +48,7 @@
       "users": {
          "$user": {
             ".read": true,
-            ".write": "auth.uid === $user && (!newData.exists() || newData.hasChildren())",
+            ".write": true,
             "fullname": {
                ".validate": "newData.isString() && newData.val().length <= 2000"
             },
