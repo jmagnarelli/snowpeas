@@ -18,7 +18,7 @@ angular.module('myApp.routes', ['ngRoute', 'simpleLogin'])
     },
     '/chat': {
       templateUrl: 'partials/chat.html',
-      controller: 'ChatCtrl'
+      controller: 'ChatCtrl',
     },
     '/login': {
       templateUrl: 'partials/login.html',
@@ -34,7 +34,17 @@ angular.module('myApp.routes', ['ngRoute', 'simpleLogin'])
     },
     '/items': {
         templateUrl: 'partials/items.html',
-        controller: 'ItemsCtrl'
+        controller: 'ItemsCtrl',
+        authRequired: true,
+        resolve: {
+        // forces the page to wait for this promise to resolve before controller is loaded
+        // the controller can then inject `user` as a dependency. This could also be done
+        // in the controller, but this makes things cleaner (controller doesn't need to worry
+        // about auth status or timing of displaying its UI components)
+        user: ['simpleLogin', function(simpleLogin) {
+          return simpleLogin.getUser();
+        }]
+      }
     },
     '/listItems': {
         templateUrl: 'partials/itemListing.html',
