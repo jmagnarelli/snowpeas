@@ -8,10 +8,11 @@
 <div id="listingResults">
 	<article class="foodItem" ng-repeat="item in items | filter:{$:searchTerm}:false" ng-click="openItem(item)" id="{{item.$id}}">
 		<h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
+		<div class="itemName">{{item.name}}
 		<div class="itemPrice">{{item.price}}<div>
 		<div class="itemDescr">{{item.description}}</div>
 		<!-- TODO: figure out how to look up an owner and put their name here -->
-		<div class="itemOwner">{{item.username}}</div>
+		<div class="itemOwner"><a href="/users/{{item.username}}">{{item.username}}</a></div>
 	</article>
 </div>
 
