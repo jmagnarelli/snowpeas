@@ -9,6 +9,12 @@ before_script:
   - npm run update-webdriver
   - sleep 1 # give server time to start
 
-script:
-  - node_modules/.bin/karma start test/karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox
-  - node_modules/.bin/protractor test/protractor-conf.js --browser=firefox
+script: npm run-script deploy
+env:
+    global:
+        - GH_REF: github.com/snowpeame/snowpeas
+        - secure: sFORrd8RuREojumxVt121evh9V642/vQIxe0MCke6ztzInghmQ9AXgLFw92WfunKAQHoSdflyUCIcIoC7wBrY1tTNY+m+3AtvtY5cBXNJ0r9ynLOXLPBtYP803cMtq8h6UVHdnr1KL0ziuINGC7uRRrf6a7KzvB71Zic7WNrYds=
+
+branches:
+    only:
+        - master
