@@ -24,7 +24,7 @@ body {
 }
 
 .menu > li.hide {
-   display: none;
+  display: none;
 }
 
 .menu > li:before {
@@ -38,57 +38,65 @@ body {
 }
 
 p.status {
-   color: red;
+  color: red;
 }
 
-p.status.good, p.good {
-   color: green;
+p.status.good,
+p.good {
+  color: green;
 }
 
 form label {
-   display: block;
-   margin: 15px 0;
+  display: block;
+  margin: 15px 0;
 }
 
 form label span {
-   display: block;
-   font-weight: bold;
+  display: block;
+  font-weight: bold;
 }
 
 .error {
-   color: red;
+  color: red;
 }
 
 fieldset {
-   float: left;
-   margin-right: 25px;
-   padding: 25px;
+  float: left;
+  margin-right: 25px;
+  padding: 25px;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
 }
-
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
+
   margin-bottom: 60px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
+
   height: 60px;
   background-color: #f5f5f5;
 }
-
-
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -98,6 +106,17 @@ body {
   max-width: 680px;
   padding: 0 15px;
 }
+
 .container .text-muted {
   margin: 20px 0;
+}
+
+.itemPicture {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+#listingResults {
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
