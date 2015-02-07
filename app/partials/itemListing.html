@@ -1,0 +1,12 @@
+<h2>Food near you</h2>
+
+<div id="listingResults">
+	<article class="foodItem" ng-repeat="item in items" ng-click="openItem(item)" id="{{item.$id}}">
+		<h3 title="{{item.name}}">{{item.name}}</h3>
+		<div ng-bind-html="article.summary"></div>
+	</article>
+
+<p>
+  Running the 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
