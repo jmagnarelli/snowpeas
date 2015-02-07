@@ -15,14 +15,15 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   var profile = fbutil.syncObject(['users', user.uid]);
   profile.$bindTo($scope, 'profile');
 
-  $scope.addItem = function (newItemName, newItemDescription, newItemPrice) {
-    if (newItemName && newItemDescription && newItemPrice) {
+  $scope.addItem = function (itemName, itemDescription, itemPrice, itemPicture) {
+    if (itemName && itemDescription && itemPrice) {
       var newItem = {
-        name: newItemName,
-        description: newItemDescription,
-        price: newItemPrice,
+        name: itemName,
+        description: itemDescription,
+        price: itemPrice,
         userid: user.uid,
-        username: profile.name
+        username: profile.name,
+        url: itemPicture
       }
       $scope.items.$add(newItem);
     }
