@@ -7,10 +7,10 @@
 
     // put your services here!
     // .service('serviceName', ['dependency', function(dependency) {}]);
-    
+
     .factory('itemsList', ['fbutil', function (fbutil) {
         return fbutil.syncArray('items', {
-            limit:10,
+            limit:100,
             endAt: null
         });
     }])
