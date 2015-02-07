@@ -18,6 +18,39 @@
 
 <form>
     <fieldset>
+        <legend>Change Information</legend>
+
+        <label>
+            <span>Name:</span>
+            <input type="text" ng-keypress="clear()" ng-model="newName" />
+        </label>
+
+        <label>
+            <span>Address</span>
+            <input type="text" ng-keypress="clear()" ng-model="newAddress" />
+        </label>
+
+        <label>
+            <span>City</span>
+            <input type="text" ng-keypress="clear()" ng-model="newCity" />
+        </label>
+
+        <label>
+            <span>ZIP Code</span>
+            <input type="text" ng-keypress="clear()" ng-model="newZip" />
+        </label>
+
+        <label>
+            <span>State</span>
+            <input type="text" ng-keypress="clear()" ng-model="newState" />
+        </label>
+
+        <button ng-click="changeInfo(newName, newAddress, newCity, newZip, newState)">change information</button>
+    </fieldset>
+</form>
+
+<form>
+    <fieldset>
         <legend>Change Password</legend>
 
         <label>
