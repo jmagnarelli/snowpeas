@@ -16,10 +16,6 @@ angular.module('myApp.routes', ['ngRoute', 'simpleLogin'])
         }]
       }
     },
-    '/chat': {
-      templateUrl: 'partials/chat.html',
-      controller: 'ChatCtrl',
-    },
     '/login': {
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl'

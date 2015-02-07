@@ -9,17 +9,6 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     $scope.FBURL = FBURL;
   }])
 
-.controller('ChatCtrl', ['$scope', 'messageList', function ($scope, messageList) {
-  $scope.messages = messageList;
-  $scope.addMessage = function (newMessage) {
-    if (newMessage) {
-      $scope.messages.$add({
-        text: newMessage
-      });
-    }
-  };
-  }])
-
 .controller('ItemsCtrl', ['$scope', 'itemsList', 'user', 'fbutil', function ($scope, itemsList, user, fbutil) {
   $scope.items = itemsList;
   var profile = fbutil.syncObject(['users', user.uid]);
