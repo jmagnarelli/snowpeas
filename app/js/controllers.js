@@ -43,6 +43,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   $scope.pass = null;
   $scope.confirm = null;
   $scope.createMode = false;
+  $scope.coordinates = null;
 
   $scope.login = function (email, pass) {
     $scope.err = null;
@@ -90,7 +91,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   function errMessage(err) {
     return angular.isObject(err) && err.code ? err.code : err + '';
   }
-  }])
+}])
 
 .controller('AccountCtrl', ['$scope', 'simpleLogin', 'fbutil', 'user', '$location',
     function ($scope, simpleLogin, fbutil, user, $location) {
