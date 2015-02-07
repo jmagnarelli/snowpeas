@@ -1,13 +1,19 @@
 <h2>Food near you</h2>
 
+
+<form>
+  <input placeholder="Search Term" ng-model="searchTerm">
+</form>
+
 <div id="listingResults">
-	<article class="foodItem" ng-repeat="item in items" ng-click="openItem(item)" id="{{item.$id}}">
+	<article class="foodItem" ng-repeat="item in items | filter:{$:searchTerm}:false" ng-click="openItem(item)" id="{{item.$id}}">
 		<h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
 		<div class="itemPrice">{{item.price}}<div>
 		<div class="itemDescr">{{item.description}}</div>
 		<!-- TODO: figure out how to look up an owner and put their name here -->
-		<div class="itemOwner">{{item.owner}}</div>
+		<div class="itemOwner">{{item.username}}</div>
 	</article>
+</div>
 
 <p>
   Running the 'interpolate' filter:
