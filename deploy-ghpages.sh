@@ -2,21 +2,17 @@
 set -e # exit with nonzero if anything fails
 
 # clear and recreate the out dir
-rm -rf out || exit 0;
-mkdir out;
+rm -rf app || exit 0;
+mkdir app;
 
 # compile
 npm install
 
-cd out
+cd app
 git init
 
 git config user.name "Travis-CI"
 git config user.email "johnjmartiniv@gmail.com"
-
-cd ..
-cp -r app/ out/
-cd out
 
 git add .
 git commit -m "Deployed to Github Pages"
