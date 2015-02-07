@@ -158,5 +158,14 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       $scope.emailerr = null;
       $scope.emailmsg = null;
     }
+
+    function updateLocation() {
+      $scope.coordinates = null;
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        $scope.coordinates = pos.coords;
+        // Update user object here
+      });
+    }
+
     }
   ]);
