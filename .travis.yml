@@ -9,7 +9,7 @@ before_script:
   - npm run update-webdriver
   - sleep 1 # give server time to start
 
-script: bundle exec rake travis
+script: npm run-script deploy
 env:
     global:
         - GH_REF: github.com/snowpeame/snowpeas
