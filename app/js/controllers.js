@@ -42,6 +42,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 
 .controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
   $scope.fullname = null;
+  $scope.url = null;
   $scope.address = null;
   $scope.city = null;
   $scope.state = null;
@@ -65,7 +66,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   $scope.createAccount = function () {
     $scope.err = null;
     if (assertValidAccountProps()) {
-      simpleLogin.createAccount($scope.fullname, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass)
+      simpleLogin.createAccount($scope.fullname, $scope.url, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass)
         .then(function ( /* user */ ) {
           $location.path('/account');
         }, function (err) {
