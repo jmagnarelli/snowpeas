@@ -1,41 +1,11 @@
-# angularfire-seed — the seed for Angular+Firebase apps
+# SnowpeaMe
+A 2015 HackBeanpot project.
 
-This derivative of [angular-seed](https://github.com/angular/angular-seed) is an application 
-skeleton for a typical [AngularFire](http://angularfire.com/) web app. You can use it to quickly 
-bootstrap your Angular + Firebase projects.
 
-The seed is preconfigured to install the Angular framework, Firebase, AngularFire, and a bundle of
-development and testing tools.
+### Build Status
 
-The seed app doesn't do much, but does demonstrate the basics of Angular + Firebase development,
-including:
- * binding synchronized objects
- * binding synchronized arrays
- * authentication
- * route security
- * basic account management
+[![Build Status](https://travis-ci.org/snowpeame/snowpeas.svg?branch=master)](https://travis-ci.org/snowpeame/snowpeas)
 
-## How to use angularfire-seed
-
-Other than one additional configuration step (specifying your Firebase URL), this setup is nearly
-identical to angular-seed.
-
-### Prerequisites
-
-You need git to clone the angularfire-seed repository. You can get it from
-[http://git-scm.com/](http://git-scm.com/).
-
-We also use a number of node.js tools to initialize and test angularfire-seed. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
-
-### Clone angularfire-seed
-
-Clone the angularfire-seed repository using [git][git]:
-
-```
-git clone https://github.com/firebase/angularfire-seed.git
-cd angularfire-seed
-```
 
 ### Install Dependencies
 
@@ -288,7 +258,7 @@ along with a CI service (in Jenkins) hosted that will run unit and end to end te
 
 ## Contact
 
-For more information on Firebase and AngularFire, 
+For more information on Firebase and AngularFire,
 check out https://firebase.com/docs/web/bindings/angular
 
 For more information on AngularJS please check out http://angularjs.org/

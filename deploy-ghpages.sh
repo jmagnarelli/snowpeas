@@ -16,6 +16,7 @@ git config user.email "johnjmartiniv@gmail.com"
 
 cd ..
 cp -r app/. out
+cp CNAME out
 cd out
 
 git add .
