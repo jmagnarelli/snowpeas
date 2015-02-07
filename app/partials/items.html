@@ -1,0 +1,15 @@
+<h2>Item</h2>
+
+<form>
+  <input placeholder="Item..." ng-model="newItem">
+  <button type="submit" ng-click="addItem(newItem);newItem = null;">send</button>
+</form>
+
+<ul id="items" ng-show="items.length">
+    <li ng-repeat="item in items | reverse">{{item.text}}</li>
+</ul>
+
+<p>
+  Running the 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
