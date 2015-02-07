@@ -6,7 +6,7 @@ rm -rf out || exit 0;
 mkdir out;
 
 # compile
-node build.js
+npm install
 
 cd out
 git init
