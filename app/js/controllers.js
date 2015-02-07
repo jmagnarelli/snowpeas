@@ -19,14 +19,20 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         }
     };
   }])
-.controller('ItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
+
+.controller('ItemsCtrl', ['$scope', 'itemsList', 'user', 'fbutil', function ($scope, itemsList, user, fbutil) {
     $scope.items = itemsList;
+    var profile = fbutil.syncObject(['users', user.uid]);
+    profile.$bindTo($scope, 'profile');
+
     $scope.addItem = function (newItemName, newItemDescription, newItemPrice) {
         if (newItemName && newItemDescription && newItemPrice) {
             var newItem = {
                 name: newItemName,
                 description: newItemDescription,
-                price: newItemPrice
+                price: newItemPrice,
+                userid: user.uid,
+                username: profile.name
             }
             $scope.items.$add(newItem);
         }
