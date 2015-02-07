@@ -10,6 +10,7 @@ before_script:
   - sleep 1 # give server time to start
 
 script: npm run-script deploy
+
 env:
     global:
         - GH_REF: github.com/snowpeame/snowpeas
@@ -18,3 +19,5 @@ env:
 branches:
     only:
         - master
+
+after_success: npm run-script cleanup
