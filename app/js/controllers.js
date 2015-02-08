@@ -238,11 +238,10 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 
     $scope.updateLocation = function () {
       resetMessages();
-      $scope.coordinates = null;
       navigator.geolocation.getCurrentPosition(function(pos) {
         var coords = {'longitude': pos.coords.longitude,
                       'latitude': pos.coords.latitude};
-        $scope.coordinates = coords;
+        var profile = fbutil.syncObject(['users', user.uid]);
         profile.coordinates = coords;
         profile.$save().then(function(ref) {
           $scope.msg = "Location updated: long:" + coords.longitude + ", lat:" + coords.latitude;
