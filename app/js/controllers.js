@@ -22,7 +22,8 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         price: itemPrice,
         userid: user.uid,
         username: profile.name,
-        url: itemPicture
+        url: itemPicture,
+        ownerPicture: profile.url
       }
       $scope.items.$add(newItem);
     }
@@ -35,11 +36,11 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
             var usrId = data[i].userid;
             data[i].usrObject = fbutil.syncArray(['users', usrId]);
         }
-    $scope.items = data;
-    });   
+  $scope.items = data;
+  });   
 
-    $scope.items = itemsList;
-    $scope.usersList = usersList;
+  $scope.items = itemsList;
+  $scope.usersList = usersList;
 
     // haversine
     // By Nick Justice (niix)
