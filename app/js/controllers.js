@@ -67,7 +67,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     };
 
     $scope.getLocationAndFilter = function (thresh) {
-        $scope.coordinates = null;
+        $scope.items = itemsList;
         navigator.geolocation.getCurrentPosition(function(pos) {
         var coords = {'longitude': pos.coords.longitude,
                       'latitude': pos.coords.latitude};
