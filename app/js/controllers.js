@@ -29,8 +29,9 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   };
 }])
 
-.controller('ListItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
+.controller('ListItemsCtrl', ['$scope', 'itemsList', 'usersList', function ($scope, itemsList, usersList) {
     $scope.items = itemsList;
+    $scope.usersList = usersList;
 
     // haversine
     // By Nick Justice (niix)
@@ -39,7 +40,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     // convert to radians
     var toRad = function(num) {
       return num * Math.PI / 180
-    }
+    };
     function haversine(start, end, options) {
       var km    = 6371
       var mile  = 3960
@@ -63,6 +64,26 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       } else {
         return R * c
       }
+    };
+
+    $scope.getLocationAndFilter = function (thresh) {
+      $scope.coordinates = null;
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        $scope.coordinates = coords;
+
+        $scope.userLocations = {};
+        for (var i = 0; i < usersList.length; i++) {
+          var user = usersList[i];
+          $scope.userLocations[user.$id] = user.coordinates;
+        }
+        $scope.items = $scope.items.filter(function(item) {
+          var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
+          console.log(item + retVal);
+          return retVal;
+        });
+      }); 
     }
 }])
 

@@ -2,7 +2,9 @@
 
 
 <form>
-  <input placeholder="Search Term" ng-model="searchTerm" />
+  <input placeholder="Search Term" ng-model="searchTerm">
+  <input placeholder="Search Radius (miles)" ng-model="maxDistance">
+  <button ng-click="getLocationAndFilter(maxDistance);">Filter Nearby</button>
 </form>
 
 <div id="listingResults">
