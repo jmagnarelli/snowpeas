@@ -1,11 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Didact+Gothic);
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:400,800);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,900);
 
 h1, h2, h3, h4 {
   font-family: 'Didact Gothic', sans-serif;
 }
 h2 {
   font-size: 4.2em;
+}
+.home-container > h2 {
+  font-family: 'Merriweather', serif;
+  font-weight: 900;
 }
 .update{
   margin-right: 100px;
