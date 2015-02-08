@@ -1,14 +1,15 @@
-<div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 980px 700px">
+<div class="container">
+  <div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 100% 700px">
+  </div>
+  <h2>Item</h2>
+
+  <form>
+    <input placeholder="Item Name" ng-model="itemName">
+    <input placeholder="Item Description" ng-model="itemDescription">
+    <input placeholder="Item Price" ng-model="itemPrice">
+    <input placeholder="Item Picture (URL)" ng-model="itemPicture">
+    <button type="submit" ng-click="addItem(itemName, itemDescription, itemPrice, itemPicture);itemName = null;itemDescription = null;itemPrice = null;itemPicture = null;">send</button>
+  </form>
+
+  <p id="demo"></p>
 </div>
-<h2>Item</h2>
-
-<form>
-  <input placeholder="Item Name" ng-model="itemName">
-  <input placeholder="Item Description" ng-model="itemDescription">
-  <input placeholder="Item Price" ng-model="itemPrice">
-  <input placeholder="Item Picture (URL)" ng-model="itemPicture">
-  <button type="submit" ng-click="addItem(itemName, itemDescription, itemPrice, itemPicture);itemName = null;itemDescription = null;itemPrice = null;itemPicture = null;">send</button>
-</form>
-
-<p id="demo"></p>
-

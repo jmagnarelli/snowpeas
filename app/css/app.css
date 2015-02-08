@@ -1,11 +1,7 @@
 /* app css stylesheet */
 body {
   margin: 10px;
-  color: #001A00 !important;
-  background: #F7E4BE url(http://www.blogblog.com/1kt/watermark/body_background_birds.png) repeat scroll top left !important; }
-
-.fuck-bootstrap {
-  padding: 0px !important; }
+  color: #001A00 !important; }
 
 .menu {
   list-style: none;
@@ -74,11 +70,6 @@ html {
   .container .text-muted {
     margin: 20px 0; }
 
-.strech-banner {
-  padding: 40px 0px;
-  background-color: #556270;
-  color: #eee; }
-
 /*LOGIN */
 .form-signin {
   max-width: 330px;
@@ -136,4 +127,7 @@ html {
   width: 200px;
   height: 200px;
   margin: 20px;
-}
+  border: 3px solid #DBDBDB;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=app.css.map */
