@@ -32,9 +32,6 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 .controller('ListItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
     $scope.items = itemsList;
 
-
-
-
     // haversine
     // By Nick Justice (niix)
     // https://github.com/niix/haversine
@@ -219,6 +216,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     }
 
     $scope.updateLocation = function () {
+      resetMessages();
       $scope.coordinates = null;
       navigator.geolocation.getCurrentPosition(function(pos) {
         var coords = {'longitude': pos.coords.longitude,
@@ -226,7 +224,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         $scope.coordinates = coords;
         profile.coordinates = coords;
         profile.$save().then(function(ref) {
-          echo("we got here, so yeah.");
+          $scope.msg = "Location updated: long:" + coords.longitude + ", lat:" + coords.latitude;
         }, function(error) {
           console.log("Error:", error);
         });
