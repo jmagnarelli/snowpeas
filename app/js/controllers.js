@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
-  .controller('HomeCtrl', ['$scope', 'fbutil', 'user', 'FBURL', function ($scope, fbutil, user, FBURL) {
+  .controller('HomeCtrl', ['$scope', 'fbutil', 'user', function ($scope, fbutil, user) {
     var user = fbutil.syncObject(['users', user.uid]);
     user.$bindTo($scope, 'user');
   }])
@@ -194,10 +194,6 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       profile.$destroy();
       simpleLogin.logout();
       $location.path('/login');
-    };
-
-    $scope.changeInfo = function (name, address, city, zip, state) {
-        // TODO: update user information
     };
 
     $scope.changePassword = function (pass, confirm, newPass) {
