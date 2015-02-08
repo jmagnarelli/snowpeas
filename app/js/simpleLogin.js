@@ -46,7 +46,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
           auth.$unauth();
         },
 
-        createAccount: function(fullname, url, address, city, state, zipcode, email, pass) {
+        createAccount: function(fullname, url, coverPhotoUrl, address, city, state, zipcode, email, pass, coords) {
           return auth.$createUser({email: email, password: pass})
             .then(function() {
               // authenticate so we have permission to write to Firebase
@@ -54,7 +54,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
             })
             .then(function(user) {
               // store user data in Firebase after creating account
-              return createProfile(user.uid, email, fullname, address, city, state, zipcode, url).then(function () {
+              return createProfile(user.uid, email, fullname, address, city, state, zipcode, url, coverPhotoUrl, coords).then(function () {
                 return user;
               });
             });
@@ -95,9 +95,9 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
     }])
 
   .factory('createProfile', ['fbutil', '$q', '$timeout', function(fbutil, $q, $timeout) {
-    return function(id, email, fullname, address, city, state, zipcode, url) {
+    return function(id, email, fullname, address, city, state, zipcode, url, coverPhotoUrl, coords) {
       var ref = fbutil.ref('users', id), def = $q.defer();
-      ref.set({email: email, name: fullname, address: address, city: city, state: state, zipcode: zipcode, url: url}, function(err) {
+      ref.set({email: email, name: fullname, address: address, city: city, state: state, zipcode: zipcode, url: url, coverPhotoUrl: coverPhotoUrl, coordinates:coords}, function(err) {
         $timeout(function() {
           if( err ) {
             def.reject(err);

@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SnowPea</title>
+  <title>SnowPea Me</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="css/app.css" />
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css" />
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 
@@ -25,7 +25,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">SnowPea</a>
+        <a class="navbar-brand" href="#">SnowPea Me</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -38,9 +38,11 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li ng-hide-auth><a href="#/login">Login</a>
+          <li ng-hide-auth><a href="#/login"><button type="button" >Login</button></a>
           </li>
-          <li ng-show-auth><a href="#/account">Account</a>
+          <li ng-hide-auth><a href="#/register"><button type="button" >Register</button></a>
+          </li>
+          <li ng-show-auth><a href="#/account">Account <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
           </li>
 
         </ul>
@@ -60,6 +62,7 @@
     <li ng-show-auth><a href="#/account">account</a></li>
   </ul>
 -->
+
   <div ng-view style="margin: 3em 0;"></div>
 
   <footer class="footer">

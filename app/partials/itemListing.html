@@ -4,10 +4,14 @@
     </div>
 </div>
 
-<div class='container'>
-    <form>
-        <input placeholder="Search Term" ng-model="searchTerm">
-    </form>
+<!-- <div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 980px 700px"> -->
+
+
+<form>
+  <input placeholder="Search Term" ng-model="searchTerm">
+  <input placeholder="Search Radius (miles)" ng-model="maxDistance">
+  <button ng-click="getLocationAndFilter(maxDistance);">Filter Nearby</button>
+</form>
 
     <div id="listingResults row">
         <div class='fuck-bootstrap col-sm-4' ng-repeat="item in items | filter:{$:searchTerm}:false">

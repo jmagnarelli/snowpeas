@@ -37,29 +37,85 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         }
     $scope.items = data;
     })
+
+.controller('ListItemsCtrl', ['$scope', 'itemsList', 'usersList', function ($scope, itemsList, usersList) {
+    $scope.items = itemsList;
+    $scope.usersList = usersList;
+
+    // haversine
+    // By Nick Justice (niix)
+    // https://github.com/niix/haversine
+
+    // convert to radians
+    var toRad = function(num) {
+      return num * Math.PI / 180
+    };
+    function haversine(start, end, options) {
+      var km    = 6371
+      var mile  = 3960
+      options   = options || {}
+
+      var R = options.unit === 'mile' ?
+        mile :
+        km
+
+      var dLat = toRad(end.latitude - start.latitude)
+      var dLon = toRad(end.longitude - start.longitude)
+      var lat1 = toRad(start.latitude)
+      var lat2 = toRad(end.latitude)
+
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+
+      if (options.threshold) {
+        return options.threshold > (R * c)
+      } else {
+        return R * c
+      }
+    };
+
+    $scope.getLocationAndFilter = function (thresh) {
+        $scope.items = itemsList;
+        navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        $scope.coordinates = coords;
+
+        $scope.userLocations = {};
+        for (var i = 0; i < usersList.length; i++) {
+          var user = usersList[i];
+          $scope.userLocations[user.$id] = user.coordinates;
+        }
+        $scope.items = $scope.items.filter(function(item) {
+          var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
+          console.log(item.name + retVal);
+          return retVal;
+        });
+        $scope.$apply();
+      });
+    }
 }])
 
-.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', function ($scope, $routeParams, fbutil, usersList, $sce) {
+.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', 'itemsList',
+    function ($scope, $routeParams, fbutil, usersList, $sce, itemsList) {
+
+    $scope.items = itemsList;
+
     var user = fbutil.syncObject(['users', $routeParams.userId]);
     user.$bindTo($scope, 'user');
+
     $scope.getMapQueryString = function (address, city, state, zipcode) {
       return $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyDqUoEaakiM5voTOBOqWEhCVydQKoWOZ3E&q=" + address + city + state + zipcode);
     }
 }])
 
-
 .controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
-  $scope.fullname = null;
-  $scope.url = null;
-  $scope.address = null;
-  $scope.city = null;
-  $scope.state = null;
-  $scope.zipcode = null;
   $scope.email = null;
   $scope.pass = null;
   $scope.confirm = null;
   $scope.createMode = false;
-  $scope.coordinates = null;
+
 
   $scope.login = function (email, pass) {
     $scope.err = null;
@@ -71,15 +127,40 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       });
   };
 
+  function errMessage(err) {
+    return angular.isObject(err) && err.code ? err.code : err + '';
+  }
+}])
+.controller('RegisterCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
+  $scope.fullname = null;
+  $scope.url = null;
+  $scope.address = null;
+  $scope.city = null;
+  $scope.state = null;
+  $scope.zipcode = null;
+  $scope.email = null;
+  $scope.pass = null;
+  $scope.confirm = null;
+  $scope.createMode = false;
+
+
   $scope.createAccount = function () {
     $scope.err = null;
     if (assertValidAccountProps()) {
-      simpleLogin.createAccount($scope.fullname, $scope.url, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass)
-        .then(function ( /* user */ ) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        console.log("we got here, so yeah.");
+        simpleLogin.createAccount($scope.fullname, $scope.url, $scope.coverPhotoUrl, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass, coords)
+        .then(function (user) {
           $location.path('/account');
         }, function (err) {
           $scope.err = errMessage(err);
         });
+
+      });
+
+
     }
   };
 
@@ -165,13 +246,20 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       $scope.emailmsg = null;
     }
 
-    function updateLocation() {
-      $scope.coordinates = null;
+    $scope.updateLocation = function () {
+      resetMessages();
       navigator.geolocation.getCurrentPosition(function(pos) {
-        $scope.coordinates = pos.coords;
-        // Update user object here
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        var profile = fbutil.syncObject(['users', user.uid]);
+        profile.coordinates = coords;
+        profile.$save().then(function(ref) {
+          $scope.msg = "Location updated: long:" + coords.longitude + ", lat:" + coords.latitude;
+        }, function(error) {
+          console.log("Error:", error);
+        });
+
       });
     }
-
     }
   ]);
