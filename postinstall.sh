@@ -1,3 +1,3 @@
 #!/bin/bash
 bower install
-sass --update assets/sass:app/css
+#sass --update assets/sass:app/css
