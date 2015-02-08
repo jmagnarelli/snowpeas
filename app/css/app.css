@@ -1,9 +1,14 @@
 /* app css stylesheet */
-
+@import url(http://fonts.googleapis.com/css?family=Didact+Gothic);
 body {
   margin: 10px;
 }
-
+h1, h2, h3, h4 {
+  font-family: 'Didact Gothic', sans-serif;
+}
+h2 {
+  font-size: 4.2em;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;

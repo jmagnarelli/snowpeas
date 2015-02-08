@@ -1,24 +1,23 @@
-<div class="jumbotron">
-<img src="{{user.coverPhotoUrl}}" class="coverPhoto" alt="{{user.name}}'s amazing cover photo. Wow.">
-<img src="{{user.url}}" class="profilePicture img-thumbnail" alt="{{user.name}}'s stunning profile picture.">
-<h1>{{user.name}}</h1>
-<a href="mailto:{{user.email}}"><button>Email me!</button></a>
+<div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('{{user.coverPhotoUrl}}');background-repeat: no-repeat;background-size: 980px 700px">
+  <!--<img src="{{user.coverPhotoUrl}}" class="coverPhoto" alt="{{user.name}}'s amazing cover photo. Wow.">-->
+  <img src="{{user.url}}" class="profilePicture img-thumbnail" alt="{{user.name}}'s stunning profile picture.">
 </div>
-<h3>Location: {{user.address}} {{user.city}} {{user.state}} {{user.zipcode}}</h3>
-
-<iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  ng-src="{{getMapQueryString(user.address, user.city, user.state, user.zipcode)}}">
-</iframe>
+<h2 style="margin-top:100px;">{{user.name}}</h2>
+<a href="mailto:{{user.email}}">
+  <button>Email me!</button>
+</a>
 
 <h3>Contact: {{user.email}}</h3>
+<h3>Location: {{user.address}} {{user.city}} {{user.state}} {{user.zipcode}}</h3>
 
-<h3>Items for sale</h3>
+<iframe width="600" height="450" frameborder="0" style="border:0" ng-src="{{getMapQueryString(user.address, user.city, user.state, user.zipcode)}}">
+</iframe>
+
+
+<h2>Items for sale</h2>
 <article class="foodItem" ng-repeat="item in items | filter:{$: user.$id}:true" ng-click="openItem(item)" id="{{item.$id}}">
   <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
-    <img src="{{item.url}}" class="itemPicture" alt="{{item.name}}">
-    <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
+  <img src="{{item.url}}" class="itemPicture" alt="{{item.name}}">
+  <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
   <div class="itemDescr"><b>Description:</b> {{item.description}}</div>
 </article>
