@@ -33,9 +33,14 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     $scope.items = itemsList;
 }])
 
-.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', function ($scope, $routeParams, fbutil, usersList, $sce) {
+.controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', 'itemsList',
+    function ($scope, $routeParams, fbutil, usersList, $sce, itemsList) {
+
+    $scope.items = itemsList;
+
     var user = fbutil.syncObject(['users', $routeParams.userId]);
     user.$bindTo($scope, 'user');
+
     $scope.getMapQueryString = function (address, city, state, zipcode) {
       return $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyDqUoEaakiM5voTOBOqWEhCVydQKoWOZ3E&q=" + address + city + state + zipcode);
     }
@@ -174,6 +179,5 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 
       });
     }
-
     }
   ]);
