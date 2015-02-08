@@ -46,31 +46,8 @@
            }
        },
       "users": {
-         "$user": {
-            ".read": true,
-            ".write": true,
-            "fullname": {
-               ".validate": "newData.isString() && newData.val().length <= 2000"
-            },
-            "address": {
-               ".validate": "newData.isString() && newData.val().length <= 2000"
-            },
-            "city": {
-               ".validate": "newData.isString() && newData.val().length <= 2000"
-            },
-            "state": {
-               ".validate": "newData.isString() && newData.val().length <= 2000"
-            },
-            "zipcode": {
-               ".validate": "newData.isString() && newData.val().length <= 2000"
-            },
-            "email": {
-               ".validate": "newData.isString() && newData.val().length <= 2000"
-            },
-            "$other": {
-               ".validate": false
-            }
-         }
+          ".read": true,
+          ".write": true
       }
    }
 }
