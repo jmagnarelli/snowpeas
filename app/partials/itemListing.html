@@ -2,27 +2,30 @@
   <div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 100% 700px"> </div>
   <h2>Food near you</h2>
 
+  <div class='container'>
+    <form>
+      <input placeholder="Search Term" ng-model="searchTerm">
+      <input placeholder="Search Radius (miles)" ng-model="maxDistance">
+      <button ng-click="getLocationAndFilter(maxDistance);">Filter Nearby</button>
+    </form>
 
-  <form>
-    <input placeholder="Search Term" ng-model="searchTerm">
-    <input placeholder="Search Radius (miles)" ng-model="maxDistance">
-    <button ng-click="getLocationAndFilter(maxDistance);">Filter Nearby</button>
-  </form>
 
-  <div id="listingResults row">
-    <div class='fuck-bootstrap col-sm-4' ng-repeat="item in items | filter:{$:searchTerm}:false">
-      <article class="foodItem" ng-click="openItem(item)" id="{{item.$id}}">
-        <div class="itemPicture" style="background-image:url('{{item.url}}')"></div>
-        <div class="itemInfo">
-          <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
-          <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
-          <div class="itemDescr"><b>Description:</b> {{item.description}}</div>
-          <!-- TODO: figure out how to look up an owner and put their name here -->
-          <div class="itemOwner"><b>Seller:</b> <a href="#/users/{{item.userid}}">{{item.username}}</a>
+    <div id="listingResults row">
+      <div class='fuck-bootstrap col-sm-4' ng-repeat="item in items | filter:{$:searchTerm}:false">
+        <article class="foodItem" ng-click="openItem(item)" id="{{item.$id}}">
+          <div class="itemPicture" style="background-image:url('{{item.url}}')"></div>
+          <div class="itemInfo">
+            <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
+            <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
+            <div class="itemDescr"><b>Description:</b> {{item.description}}</div>
+            <!-- TODO: figure out how to look up an owner and put their name here -->
+            <div class="itemOwner"><b>Seller:</b> <a href="#/users/{{item.userid}}">{{item.username}}</a>
+            </div>
+            <p>"{{item.usrObject.url}}"</p>
           </div>
-          <p>"{{item.usrObject.url}}"</p>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
+
   </div>
 </div>
