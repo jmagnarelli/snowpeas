@@ -29,74 +29,72 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   };
 }])
 
-.controller('ListItemsCtrl', ['$scope', 'itemsList', 'fbutil', function ($scope, itemsList, fbutil) {
-    itemsList.$loaded( function(data) {
+.controller('ListItemsCtrl', ['$scope', 'itemsList', 'usersList', 'fbutil', function ($scope, itemsList, usersList, fbutil) {
+  itemsList.$loaded( function(data) {
         for (var i = 0; i < data.length; i++) {
             var usrId = data[i].userid;
             data[i].usrObject = fbutil.syncArray(['users', usrId]);
         }
     $scope.items = data;
-    });
-}])
+    });   
 
-// .controller('ListItemsCtrl', ['$scope', 'itemsList', 'usersList', function ($scope, itemsList, usersList) {
-//     $scope.items = itemsList;
-//     $scope.usersList = usersList;
-//
-//     // haversine
-//     // By Nick Justice (niix)
-//     // https://github.com/niix/haversine
-//
-//     // convert to radians
-//     var toRad = function(num) {
-//       return num * Math.PI / 180
-//     };
-//     function haversine(start, end, options) {
-//       var km    = 6371
-//       var mile  = 3960
-//       options   = options || {}
-//
-//       var R = options.unit === 'mile' ?
-//         mile :
-//         km
-//
-//       var dLat = toRad(end.latitude - start.latitude)
-//       var dLon = toRad(end.longitude - start.longitude)
-//       var lat1 = toRad(start.latitude)
-//       var lat2 = toRad(end.latitude)
-//
-//       var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-//               Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
-//       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-//
-//       if (options.threshold) {
-//         return options.threshold > (R * c)
-//       } else {
-//         return R * c
-//       }
-//     };
-//
-//     $scope.getLocationAndFilter = function (thresh) {
-//         $scope.items = itemsList;
-//         navigator.geolocation.getCurrentPosition(function(pos) {
-//         var coords = {'longitude': pos.coords.longitude,
-//                       'latitude': pos.coords.latitude};
-//         $scope.coordinates = coords;
-//
-//         $scope.userLocations = {};
-//         for (var i = 0; i < usersList.length; i++) {
-//           var user = usersList[i];
-//           $scope.userLocations[user.$id] = user.coordinates;
-//         }
-//         $scope.items = $scope.items.filter(function(item) {
-//           var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
-//           console.log(item.name + retVal);
-//           return retVal;
-//         });
-//         $scope.$apply();
-//       });
-//     }
-// }])
+    $scope.items = itemsList;
+    $scope.usersList = usersList;
+
+    // haversine
+    // By Nick Justice (niix)
+    // https://github.com/niix/haversine
+
+    // convert to radians
+    var toRad = function(num) {
+      return num * Math.PI / 180
+    };
+    function haversine(start, end, options) {
+      var km    = 6371
+      var mile  = 3960
+      options   = options || {}
+
+    var R = options.unit === 'mile' ?
+        mile :
+        km
+
+    var dLat = toRad(end.latitude - start.latitude)
+      var dLon = toRad(end.longitude - start.longitude)
+      var lat1 = toRad(start.latitude)
+      var lat2 = toRad(end.latitude)
+
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+
+    if (options.threshold) {
+        return options.threshold > (R * c)
+      } else {
+        return R * c
+      }
+    };
+
+  $scope.getLocationAndFilter = function (thresh) {
+        $scope.items = itemsList;
+        navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        $scope.coordinates = coords;
+
+      $scope.userLocations = {};
+        for (var i = 0; i < usersList.length; i++) {
+          var user = usersList[i];
+          $scope.userLocations[user.$id] = user.coordinates;
+        }
+        $scope.items = $scope.items.filter(function(item) {
+          var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
+          console.log(item.name + retVal);
+          return retVal;
+        });
+        $scope.$apply();
+      });
+    }
+ }])
 
 .controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', 'itemsList',
     function ($scope, $routeParams, fbutil, usersList, $sce, itemsList) {
