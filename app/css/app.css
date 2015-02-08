@@ -37,7 +37,8 @@ body {
       text-align: center;
       color: #eee;
       width: 50%;
-      margin: 0 auto; }
+      margin: 0 auto;
+      top: 6em; }
 
 .menu {
   list-style: none;
