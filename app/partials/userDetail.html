@@ -17,7 +17,7 @@
 
   <h2>Items for sale</h2>
   <div id="listingResults row">
-    <div class='fuck-bootstrap col-sm-4' ng-repeat="item in items | filter:{$: user.$id}:true">
+    <div class='col-sm-4 fuck-bootstrap' ng-repeat="item in items | filter:{$: user.$id}:true">
       <article class="foodItem" ng-click="openItem(item)" id="{{item.$id}}">
         <div class="itemPicture" style="background-image:url('{{item.url}}')"></div>
         <div class="itemInfo">

@@ -6,6 +6,9 @@ body {
   height: 100%;
   color: #001A00 !important; }
 
+.fuck-bootstrap {
+  padding: 0px !important; }
+
 .site-wrapper {
   display: table;
   width: 100%;
