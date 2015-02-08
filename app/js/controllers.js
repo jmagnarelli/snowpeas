@@ -29,8 +29,14 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   };
 }])
 
-.controller('ListItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
-    $scope.items = itemsList;
+.controller('ListItemsCtrl', ['$scope', 'itemsList', 'fbutil', function ($scope, itemsList, fbutil) {
+    itemsList.$loaded( function(data) {
+        for (var i = 0; i < data.length; i++) {
+            var usrId = data[i].userid;
+            data[i].usrObject = fbutil.syncArray(['users', usrId]);
+        }
+    $scope.items = data;
+    })
 }])
 
 .controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', function ($scope, $routeParams, fbutil, usersList, $sce) {
