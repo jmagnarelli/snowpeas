@@ -31,6 +31,42 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 
 .controller('ListItemsCtrl', ['$scope', 'itemsList', function ($scope, itemsList) {
     $scope.items = itemsList;
+
+
+
+
+    // haversine
+    // By Nick Justice (niix)
+    // https://github.com/niix/haversine
+
+    // convert to radians
+    var toRad = function(num) {
+      return num * Math.PI / 180
+    }
+    function haversine(start, end, options) {
+      var km    = 6371
+      var mile  = 3960
+      options   = options || {}
+
+      var R = options.unit === 'mile' ?
+        mile :
+        km
+
+      var dLat = toRad(end.latitude - start.latitude)
+      var dLon = toRad(end.longitude - start.longitude)
+      var lat1 = toRad(start.latitude)
+      var lat2 = toRad(end.latitude)
+
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+
+      if (options.threshold) {
+        return options.threshold > (R * c)
+      } else {
+        return R * c
+      }
+    }
 }])
 
 .controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', 'itemsList',
@@ -47,7 +83,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 }])
 
 
-.controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
+.controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', 'fbutil', function ($scope, simpleLogin, $location, fbutil) {
   $scope.fullname = null;
   $scope.url = null;
   $scope.address = null;
@@ -73,12 +109,20 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   $scope.createAccount = function () {
     $scope.err = null;
     if (assertValidAccountProps()) {
-      simpleLogin.createAccount($scope.fullname, $scope.url, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass)
-        .then(function ( /* user */ ) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        console.log("we got here, so yeah.");
+        simpleLogin.createAccount($scope.fullname, $scope.url, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass, coords)
+        .then(function (user) {
           $location.path('/account');
         }, function (err) {
           $scope.err = errMessage(err);
         });
+
+      });
+
+
     }
   };
 
