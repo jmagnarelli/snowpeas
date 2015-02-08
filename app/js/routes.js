@@ -20,6 +20,10 @@ angular.module('myApp.routes', ['ngRoute', 'simpleLogin'])
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl'
     },
+    '/register': {
+      templateUrl: 'partials/register.html',
+      controller: 'RegisterCtrl'
+    },
     '/account': {
       templateUrl: 'partials/account.html',
       controller: 'AccountCtrl',

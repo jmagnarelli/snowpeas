@@ -48,17 +48,12 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 
 
 .controller('LoginCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
-  $scope.fullname = null;
-  $scope.url = null;
-  $scope.address = null;
-  $scope.city = null;
-  $scope.state = null;
-  $scope.zipcode = null;
+
   $scope.email = null;
   $scope.pass = null;
   $scope.confirm = null;
   $scope.createMode = false;
-  $scope.coordinates = null;
+
 
   $scope.login = function (email, pass) {
     $scope.err = null;
@@ -69,6 +64,23 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         $scope.err = errMessage(err);
       });
   };
+
+  function errMessage(err) {
+    return angular.isObject(err) && err.code ? err.code : err + '';
+  }
+}])
+.controller('RegisterCtrl', ['$scope', 'simpleLogin', '$location', function ($scope, simpleLogin, $location) {
+  $scope.fullname = null;
+  $scope.url = null;
+  $scope.address = null;
+  $scope.city = null;
+  $scope.state = null;
+  $scope.zipcode = null;
+  $scope.email = null;
+  $scope.pass = null;
+  $scope.confirm = null;
+  $scope.createMode = false;
+
 
   $scope.createAccount = function () {
     $scope.err = null;
