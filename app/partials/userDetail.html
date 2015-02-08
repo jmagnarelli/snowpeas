@@ -1,6 +1,7 @@
 <div class="jumbotron">
-<img src="{{user.url}}" class="profilePicture" alt="{{user.name}}'s stunning profile picture.">
+<img src="{{user.url}}" class="profilePicture img-thumbnail" alt="{{user.name}}'s stunning profile picture.">
 <h1>{{user.name}}</h1>
+<a href="mailto:{{user.email}}"><button>Email me!</button></a>
 </div>
 <h3>Location: {{user.address}} {{user.city}} {{user.state}} {{user.zipcode}}</h3>
 
@@ -14,8 +15,8 @@
 <h3>Contact: {{user.email}}</h3>
 
 <article class="foodItem" ng-repeat="item in items | filter:{$: user.$id}:true" ng-click="openItem(item)" id="{{item.$id}}">
-	<h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
+  <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
     <img src="{{item.url}}" class="itemPicture" alt="{{item.name}}">
     <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
-    <div class="itemDescr"><b>Description:</b> {{item.description}}
+  <div class="itemDescr"><b>Description:</b> {{item.description}}</div>
 </article>
