@@ -68,23 +68,25 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
 
     $scope.getLocationAndFilter = function (thresh) {
         $scope.items = itemsList;
-        navigator.geolocation.getCurrentPosition(function(pos) {
-        var coords = {'longitude': pos.coords.longitude,
-                      'latitude': pos.coords.latitude};
-        $scope.coordinates = coords;
+        if (thresh) {
+          navigator.geolocation.getCurrentPosition(function(pos) {
+          var coords = {'longitude': pos.coords.longitude,
+                        'latitude': pos.coords.latitude};
+          $scope.coordinates = coords;
 
-        $scope.userLocations = {};
-        for (var i = 0; i < usersList.length; i++) {
-          var user = usersList[i];
-          $scope.userLocations[user.$id] = user.coordinates;
-        }
-        $scope.items = $scope.items.filter(function(item) {
-          var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
-          console.log(item.name + retVal);
-          return retVal;
-        });
-        $scope.$apply();
-      }); 
+          $scope.userLocations = {};
+          for (var i = 0; i < usersList.length; i++) {
+            var user = usersList[i];
+            $scope.userLocations[user.$id] = user.coordinates;
+          }
+          $scope.items = $scope.items.filter(function(item) {
+            var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
+            console.log(item.name + retVal);
+            return retVal;
+          });
+          $scope.$apply();
+        }); 
+      }
     }
 }])
 
