@@ -2,16 +2,20 @@
 
 
 <form>
-  <input placeholder="Search Term" ng-model="searchTerm">
+    <input placeholder="Search Term" ng-model="searchTerm">
 </form>
 
-<div id="listingResults">
-  <article class="foodItem" ng-repeat="item in items | filter:{$:searchTerm}:false" ng-click="openItem(item)" id="{{item.$id}}">
-    <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
-    <img src="{{item.url}}" class="itemPicture" alt="{{item.name}}">
-    <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
-    <div class="itemDescr"><b>Description:</b> {{item.description}}</div>
-    <!-- TODO: figure out how to look up an owner and put their name here -->
-    <div class="itemOwner"><b>Seller:</b> <a href="#/users/{{item.userid}}">{{item.username}}</a></div>
-  </article>
+<div id="listingResults row">
+    <div class='fuck-bootstrap col-sm-4' ng-repeat="item in items | filter:{$:searchTerm}:false">
+        <article class="foodItem" ng-click="openItem(item)" id="{{item.$id}}">
+            <div class="itemPicture" style="background-image:url('{{item.url}}')"></div>
+            <div class="itemInfo">
+                <h3 class="itemName" title="{{item.name}}">{{item.name}}</h3>
+                <div class="itemPrice"><b>Price:</b> {{item.price}}</div>
+                <div class="itemDescr"><b>Description:</b> {{item.description}}</div>
+                <!-- TODO: figure out how to look up an owner and put their name here -->
+                <div class="itemOwner"><b>Seller:</b> <a href="#/users/{{item.userid}}">{{item.username}}</a></div>
+            </div>
+        </article>
+    </div>
 </div>
