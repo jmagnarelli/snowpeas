@@ -159,11 +159,19 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       $scope.emailmsg = null;
     }
 
-    function updateLocation() {
+    $scope.updateLocation = function () {
       $scope.coordinates = null;
       navigator.geolocation.getCurrentPosition(function(pos) {
-        $scope.coordinates = pos.coords;
-        // Update user object here
+        var coords = {'longitude': pos.coords.longitude,
+                      'latitude': pos.coords.latitude};
+        $scope.coordinates = coords;
+        profile.coordinates = coords;
+        profile.$save().then(function(ref) {
+          echo("we got here, so yeah.");
+        }, function(error) {
+          console.log("Error:", error);
+        });
+
       });
     }
 
