@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Didact+Gothic);
+
+h1, h2, h3, h4 {
+  font-family: 'Didact Gothic', sans-serif;
+}
+h2 {
+  font-size: 4.2em;
+}
+.update{
+  margin-right: 100px;
+  float:left;
+}

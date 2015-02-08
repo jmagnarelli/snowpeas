@@ -30,9 +30,17 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   };
 }])
 
-.controller('ListItemsCtrl', ['$scope', 'itemsList', 'usersList', function ($scope, itemsList, usersList) {
-    $scope.items = itemsList;
-    $scope.usersList = usersList;
+.controller('ListItemsCtrl', ['$scope', 'itemsList', 'usersList', 'fbutil', function ($scope, itemsList, usersList, fbutil) {
+  itemsList.$loaded( function(data) {
+        for (var i = 0; i < data.length; i++) {
+            var usrId = data[i].userid;
+            data[i].usrObject = fbutil.syncArray(['users', usrId]);
+        }
+  $scope.items = data;
+  });
+
+  $scope.items = itemsList;
+  $scope.usersList = usersList;
 
     // haversine
     // By Nick Justice (niix)
@@ -47,27 +55,27 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       var mile  = 3960
       options   = options || {}
 
-      var R = options.unit === 'mile' ?
+    var R = options.unit === 'mile' ?
         mile :
         km
 
-      var dLat = toRad(end.latitude - start.latitude)
+    var dLat = toRad(end.latitude - start.latitude)
       var dLon = toRad(end.longitude - start.longitude)
       var lat1 = toRad(start.latitude)
       var lat2 = toRad(end.latitude)
 
-      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
               Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
 
-      if (options.threshold) {
+    if (options.threshold) {
         return options.threshold > (R * c)
       } else {
         return R * c
       }
     };
 
-    $scope.getLocationAndFilter = function (thresh) {
+  $scope.getLocationAndFilter = function (thresh) {
         $scope.items = itemsList;
         if (thresh) {
           navigator.geolocation.getCurrentPosition(function(pos) {
@@ -86,10 +94,10 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
             return retVal;
           });
           $scope.$apply();
-        }); 
+        });
       }
     }
-}])
+ }])
 
 .controller('userDetailCtrl', ['$scope', '$routeParams', 'fbutil', 'usersList', '$sce', 'itemsList',
     function ($scope, $routeParams, fbutil, usersList, $sce, itemsList) {
