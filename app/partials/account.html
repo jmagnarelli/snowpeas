@@ -1,8 +1,10 @@
-<div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 980px 700px">
-</div>
-<h2>Account</h2>
-<div class="update">
-  <!--
+<div class="container">
+  <div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 100% 700px">
+  </div>
+  <h2>Account</h2>
+
+  <div class="update">
+    <!--
   <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a href="#">Home</a>
     </li>
@@ -13,56 +15,57 @@
   </ul>
 -->
 
-  <form>
-    <fieldset>
-      <legend>Change Password</legend>
+    <form>
+      <fieldset>
+        <legend>Change Password</legend>
 
-      <label>
-        <span>Old Password:</span>
-        <input type="password" ng-keypress="clear()" ng-model="oldpass" />
-      </label>
+        <label>
+          <span>Old Password:</span>
+          <input type="password" ng-keypress="clear()" ng-model="oldpass" />
+        </label>
 
-      <label>
-        <span>New Password:</span>
-        <input type="password" ng-keypress="clear()" ng-model="newpass" />
-      </label>
+        <label>
+          <span>New Password:</span>
+          <input type="password" ng-keypress="clear()" ng-model="newpass" />
+        </label>
 
-      <label>
-        <span>Confirm New Password:</span>
-        <input type="password" ng-keypress="clear()" ng-model="confirm" />
-      </label>
+        <label>
+          <span>Confirm New Password:</span>
+          <input type="password" ng-keypress="clear()" ng-model="confirm" />
+        </label>
 
-      <button ng-click="changePassword(oldpass, newpass, confirm)" class="btn btn-default">Change Password</button>
+        <button ng-click="changePassword(oldpass, newpass, confirm)" class="btn btn-default">Change Password</button>
 
-      <p class="error" ng-show="err">{{err}}</p>
-      <p class="good" ng-show="msg">{{msg}}</p>
-    </fieldset>
-  </form>
+        <p class="error" ng-show="err">{{err}}</p>
+        <p class="good" ng-show="msg">{{msg}}</p>
+      </fieldset>
+    </form>
 
+  </div>
+  <div class="update">
+    <form>
+      <fieldset>
+        <legend>Change Email</legend>
+
+        <label>
+          <span>New Email:</span>
+          <input type="text" ng-keypress="clear()" ng-model="newEmail" />
+        </label>
+
+        <label>
+          <span>Password:</span>
+          <input type="password" ng-keypress="clear()" ng-model="pass" />
+        </label>
+
+        <button ng-click="changeEmail(pass, newEmail)" class="btn btn-default">Update Email</button>
+
+        <p class="error" ng-show="emailerr">{{emailerr}}</p>
+        <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
+      </fieldset>
+    </form>
+  </div>
+
+
+  <button ng-click="logout()" class="btn btn-default">Log Out</button>
+  <button ng-click="updateLocation()" class="btn btn-default">Update Location</button>
 </div>
-<div class="update">
-  <form>
-    <fieldset>
-      <legend>Change Email</legend>
-
-      <label>
-        <span>New Email:</span>
-        <input type="text" ng-keypress="clear()" ng-model="newEmail" />
-      </label>
-
-      <label>
-        <span>Password:</span>
-        <input type="password" ng-keypress="clear()" ng-model="pass" />
-      </label>
-
-      <button ng-click="changeEmail(pass, newEmail)" class="btn btn-default">Update Email</button>
-
-      <p class="error" ng-show="emailerr">{{emailerr}}</p>
-      <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
-    </fieldset>
-  </form>
-</div>
-
-
-<button ng-click="logout()" class="btn btn-default">Log Out</button>
-<button ng-click="updateLocation()" class="btn btn-default">Update Location</button>

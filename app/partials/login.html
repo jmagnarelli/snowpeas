@@ -1,44 +1,48 @@
-<h2>Login Page</h2>
+<div class="container">
+  <div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 100% 700px"> </div>
 
-<form>
-  <label ng-show="createMode">
-    <span>Full Name</span>
-    <input type="text" ng-model="fullname" />
-  </label>
-  <label ng-show="createMode">
-    <span>Profile Picture (URL)</span>
-    <input type="text" ng-model="url">
-  </label>
-  <label ng-show="createMode">
-    <span>Address (street) </span>
-    <input type="text" ng-model="address" />
-  </label>
-  <label ng-show="createMode">
-    <span>City</span>
-    <input type="text" ng-model="city" />
-  </label>
-  <label ng-show="createMode">
-    <span>State</span>
-    <input type="text" ng-model="state" />
-  </label>
-  <label ng-show="createMode">
-    <span>Zipcode</span>
-    <input type="text" ng-model="zipcode" />
-  </label>
-  <label>
-    <span>Email</span>
-    <input type="text" ng-model="email" />
-  </label>
-  <label>
-    <span>Password</span>
-    <input type="password" ng-model="pass" />
-  </label>
-  <label ng-cloak ng-show="createMode">
-    <span>Confirm Password</span>
-    <input type="password" ng-model="confirm" />
-  </label>
-  <button ng-click="login(email, pass)" ng-hide="createMode">Log In</button>
-  <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+  <h2>Login Page</h2>
 
-  <p ng-show="err" class="error">{{err}}</p>
-</form>
+  <form>
+    <label ng-show="createMode">
+      <span>Full Name</span>
+      <input type="text" ng-model="fullname" />
+    </label>
+    <label ng-show="createMode">
+      <span>Profile Picture (URL)</span>
+      <input type="text" ng-model="url">
+    </label>
+    <label ng-show="createMode">
+      <span>Address (street) </span>
+      <input type="text" ng-model="address" />
+    </label>
+    <label ng-show="createMode">
+      <span>City</span>
+      <input type="text" ng-model="city" />
+    </label>
+    <label ng-show="createMode">
+      <span>State</span>
+      <input type="text" ng-model="state" />
+    </label>
+    <label ng-show="createMode">
+      <span>Zipcode</span>
+      <input type="text" ng-model="zipcode" />
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="text" ng-model="email" />
+    </label>
+    <label>
+      <span>Password</span>
+      <input type="password" ng-model="pass" />
+    </label>
+    <label ng-cloak ng-show="createMode">
+      <span>Confirm Password</span>
+      <input type="password" ng-model="confirm" />
+    </label>
+    <button ng-click="login(email, pass)" ng-hide="createMode">Log In</button>
+    <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+
+    <p ng-show="err" class="error">{{err}}</p>
+  </form>
+</div>
