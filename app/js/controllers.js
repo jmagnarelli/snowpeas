@@ -67,8 +67,8 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     };
 
     $scope.getLocationAndFilter = function (thresh) {
-      $scope.coordinates = null;
-      navigator.geolocation.getCurrentPosition(function(pos) {
+        $scope.coordinates = null;
+        navigator.geolocation.getCurrentPosition(function(pos) {
         var coords = {'longitude': pos.coords.longitude,
                       'latitude': pos.coords.latitude};
         $scope.coordinates = coords;
@@ -80,9 +80,10 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         }
         $scope.items = $scope.items.filter(function(item) {
           var retVal = haversine($scope.userLocations[item.userid], coords, {unit: 'mile'}) < thresh;
-          console.log(item + retVal);
+          console.log(item.name + retVal);
           return retVal;
         });
+        $scope.$apply();
       }); 
     }
 }])
