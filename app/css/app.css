@@ -1,15 +1,11 @@
 /* app css stylesheet */
 body {
   margin: 10px;
-  background-color: #556270;
-  color: #001A00 !important; }
+  color: #001A00 !important;
+  background: #F7E4BE url(http://www.blogblog.com/1kt/watermark/body_background_birds.png) repeat scroll top left !important; }
 
 .fuck-bootstrap {
   padding: 0px !important; }
-
-.navbar-not-bootstrapped {
-  border-width: 0 !important;
-  background-color: inherit; }
 
 .menu {
   list-style: none;
@@ -74,11 +70,14 @@ html {
  *-------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 .container {
-  padding: 0 15px;
-  background-color: #556270;
-  color: #001A00; }
+  padding: 0 15px; }
   .container .text-muted {
     margin: 20px 0; }
+
+.strech-banner {
+  padding: 40px 0px;
+  background-color: #556270;
+  color: #eee; }
 
 /*LOGIN */
 .form-signin {

@@ -16,7 +16,7 @@
 
 <body ng-cloak>
 
-  <nav class="navbar-not-bootstrapped navbar navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -60,10 +60,8 @@
     <li ng-show-auth><a href="#/account">account</a></li>
   </ul>
 -->
-  <div class="container">
+  <div ng-view style="margin: 3em 0;"></div>
 
-    <div ng-view style="margin: 100px 0;"></div>
-  </div>
   <footer class="footer">
     <div class="container">
       <p class="text-muted">©2015 SnowPea. Don't eat the yellow snow.</p>
