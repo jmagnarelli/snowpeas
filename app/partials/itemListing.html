@@ -9,7 +9,7 @@
     </form>
 
         <div id="listingResults row">
-            <div class='fuck-bootstrap col-sm-4' ng-repeat="item in items | filter:{$:searchTerm}:false">
+            <div class='col-sm-4 fuck-bootstrap' ng-repeat="item in items | filter:{$:searchTerm}:false">
                 <article class="foodItem" ng-click="openItem(item)" id="{{item.$id}}">
                     <div class="itemPicture" style="background-image:url('{{item.url}}')"></div>
                     <div class="userPicture" style="background-image:url('{{item.ownerPicture}}')">
