@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="jumbotron" style="opacity: 0.6;height: 200px;background-image:url('http://wallpoper.com/images/00/35/92/33/vegetables-peas_00359233.jpg');background-repeat: no-repeat;background-size: 100% 700px"> </div>
+  <h2>Register Page</h2>
+  <div style="margin-bottom: 100px;">
+    <form>
+      <label>
+        <span>Full Name</span>
+        <input type="text" ng-model="fullname" />
+      </label>
+      <label>
+        <span>Profile Picture (URL)</span>
+        <input type="text" ng-model="url">
+      </label>
+      <label>
+        <span>Cover Photo (URL)</span>
+        <input type="text" ng-model="coverPhotoUrl">
+      </label>
+      <label>
+        <span>Address (street) </span>
+        <input type="text" ng-model="address" />
+      </label>
+      <label>
+        <span>City</span>
+        <input type="text" ng-model="city" />
+      </label>
+      <label>
+        <span>State</span>
+        <input type="text" ng-model="state" />
+      </label>
+      <label>
+        <span>Zipcode</span>
+        <input type="text" ng-model="zipcode" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="text" ng-model="email" />
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" ng-model="pass" />
+      </label>
+      <label ng-cloak>
+        <span>Confirm Password</span>
+        <input type="password" ng-model="confirm" />
+      </label>
+      <!--    <button ng-click="createMode = true" ng-hide="createMode">Register</button>-->
+      <button ng-cloak ng-click="createAccount()">Create Account</button>
+      <button ng-cloak ng-click="createMode = false">Cancel</button>
+
+      <p ng-show="err" class="error">{{err}}</p>
+    </form>
+  </div>
+</div>
