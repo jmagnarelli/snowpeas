@@ -22,7 +22,8 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         price: itemPrice,
         userid: user.uid,
         username: profile.name,
-        url: itemPicture
+        url: itemPicture,
+        ownerPicture: profile.url
       }
       $scope.items.$add(newItem);
     }
