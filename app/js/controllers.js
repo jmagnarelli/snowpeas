@@ -142,7 +142,7 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
         var coords = {'longitude': pos.coords.longitude,
                       'latitude': pos.coords.latitude};
         console.log("we got here, so yeah.");
-        simpleLogin.createAccount($scope.fullname, $scope.url, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass, coords)
+        simpleLogin.createAccount($scope.fullname, $scope.url, $scope.coverPhotoUrl, $scope.address, $scope.city, $scope.state, $scope.zipcode, $scope.email, $scope.pass, coords)
         .then(function (user) {
           $location.path('/account');
         }, function (err) {
