@@ -1,8 +1,40 @@
 /* app css stylesheet */
+html, body {
+  height: 100%; }
+
 body {
   height: 100%;
-  margin: 0px;
   color: #001A00 !important; }
+
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); }
+
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top; }
+
+.hero-full {
+  height: 100%;
+  position: relative; }
+  .hero-full .jumbotron {
+    min-height: 100%;
+    position: relative;
+    margin-bottom: 0;
+    background-color: #2a363c;
+    background: url("http://i.imgur.com/xD05xXn.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
+    .hero-full .jumbotron .home-container {
+      position: relative;
+      margin: auto;
+      text-align: center; }
 
 .menu {
   list-style: none;

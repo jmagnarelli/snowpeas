@@ -12,10 +12,11 @@ $green: #C7F464
 $lightRed: #FF6B6B
 $darkRed: #C44D58
 
-
+html, body
+    height: 100%
+    
 body
     height: 100%
-    margin: 10px
     color: $darkText !important
 //    background: #F7E4BE url(http://www.blogblog.com/1kt/watermark/body_background_birds.png) repeat scroll top left !important
 
@@ -34,6 +35,25 @@ body
     display: table-cell
     vertical-align: top
 
+.hero-full
+    height: 100%
+    position: relative
+
+    .jumbotron
+        min-height: 100%
+        position: relative
+        margin-bottom: 0
+        background-color: #2a363c
+        background: url('http://i.imgur.com/xD05xXn.jpg') no-repeat center center
+        -webkit-background-size: cover
+        -moz-background-size: cover
+        -o-background-size: cover
+        background-size: cover
+
+        .home-container
+            position: relative
+            margin: auto
+            text-align: center
 
 .menu
     list-style: none
